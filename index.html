@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Mot de Passe</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon/icon.svg">
+    <link rel="stylesheet" href="./assets/tailwind.min.css">
+    <link rel="stylesheet" href="./assets/index.css">
+</head>
+<body class="bg-gray-100 h-screen flex flex-col items-center justify-center">
+    <div class="mx-auto bg-white m-2 p-8 rounded-lg shadow-md">
+        <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white md:text-4xl lg:text-6xl">Générateur de Mot de Passe</h1>
+        <p class="">Générez des mots de passe sécurisés avec des options de personnalisation.</p>
+    </div>
+    <div class="mx-auto bg-white m-2 p-8 rounded-lg shadow-md">
+        <div class="flex items-center mb-4">
+            <div class="relative w-full">
+                <span class="absolute inset-y-0 left-0 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="48"><path d="M220-80q-24.75 0-42.375-17.625T160-140v-434q0-24.75 17.625-42.375T220-634h70v-96q0-78.85 55.606-134.425Q401.212-920 480.106-920T614.5-864.425Q670-808.85 670-730v96h70q24.75 0 42.375 17.625T800-574v434q0 24.75-17.625 42.375T740-80H220Zm0-60h520v-434H220v434Zm260.168-140Q512-280 534.5-302.031T557-355q0-30-22.668-54.5t-54.5-24.5Q448-434 425.5-409.5t-22.5 55q0 30.5 22.668 52.5t54.5 22ZM350-634h260v-96q0-54.167-37.882-92.083-37.883-37.917-92-37.917Q426-860 388-822.083 350-784.167 350-730v96ZM220-140v-434 434Z"/></svg>
+                </span>
+                <input type="text" id="generatedPassword" class="w-full py-2 pl-10 pr-10 flex-grow border border-gray-300 rounded-l text-2xl active:bg-indigo-600 focus:outline-none focus:ring focus:ring-indigo-600">
+                <span id="passwordLoader" class="absolute inset-y-0 right-0 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="48"><path d="M527-80v-60q35-6 69-19.5t66-37.5l43 44q-40 30-85 48t-93 25Zm-90 0q-137-21-226-122t-89-241q0-75 28-140.5T227-698q49-49 114.5-77T482-803h20l-79-79 44-44 153 153-153 153-44-44 79-79h-20q-127 0-213.5 86.5T182-443q0 117 72.5 199.5T437-140v60Zm331-136-44-44q23-30 36.5-65t18.5-73h61q-7 51-25.5 97.5T768-216Zm72-272h-61q-5-35-18.5-70T724-626l44-43q29 40 47 85.5t25 95.5Z"/></svg>
+                </span>
+            </div>
+            <div class="flex space-x-2">
+                <button id="copyPasswordWithIcon" class="px-1 py-2 rounded-r focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
+                     width="24"><path d="M180-81q-24 0-42-18t-18-42v-603h60v603h474v60H180Zm120-120q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300Zm0-60h440v-560H300v560Zm0 0v-560 560Z"/></svg>
+                </button>
+                <button id="generatePassword" class="px-1 py-2 rounded-r focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M481-158q-131 0-225.5-94.5T161-478v-45l-80 80-39-39 149-149 149 149-39 39-80-80v45q0 107 76.5 183.5T481-218q29 0 55-5t49-15l43 43q-36 20-72.5 28.5T481-158Zm289-169L621-476l40-40 79 79v-41q0-107-76.5-183.5T480-738q-29 0-55 5.5T376-719l-43-43q36-20 72.5-28t74.5-8q131 0 225.5 94.5T800-478v43l80-80 39 39-149 149Z"/></svg>
+                </button>
+                <button id="hidePassword" class="px-1 py-2 rounded-r focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="48"><path d="m813-61-95-95q-50 36-110 56T480-80q-85 0-158-30.5T195-195q-54-54-84.5-127T80-480q0-68 20-128t56-110l-95-95 43-43 752 752-43 43Zm-333-79q55 0 104-15.5t91-43.5L199-675q-28 42-43.5 91T140-480q0 145 97.5 242.5T480-140Zm324-102-43-43q28-42 43.5-91T820-480q0-145-97.5-242.5T480-820q-55 0-104 15.5T285-761l-43-43q50-36 110-56t128-20q84 0 157 31t127 85q54 54 85 127t31 157q0 68-20 128t-56 110ZM523-523Zm-86 86Z"/></svg>
+                </button>
+            </div>
+        </div>
+        <h2 class="mb-4 font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-4xl dark:text-white border-b-2 border-gray-200">Personnaliser votre mot de passe</h2>
+        <div class="mb-4 flex">
+            <div class="">
+                <label htmlFor="passwordLength" class="block mb-2">
+                    Longueur du mot de passe
+                </label>
+                <div class="flex space-x-2">
+                    <input
+                    type="number"
+                    id="passwordLengthNumber"
+                    class="p-2 border border-gray-300 rounded-l text-center active:bg-indigo-600 focus:outline-none focus:ring focus:ring-indigo-600"
+                    min="0"
+                    max="30"
+                    value="12"
+                    />
+                    <input
+                    type="range"
+                    id="passwordLengthRange"
+                    class=""
+                    min="0"
+                    max="100"
+                    value="12"
+                    />
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <label class="inline-flex items-center mb-2">
+                    <input type="checkbox" checked id="includeUppercase" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <span class="ml-2">Majuscules</span>
+                </label>
+                <label class="inline-flex items-center mb-2">
+                    <input type="checkbox" checked id="includeLowercase" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <span class="ml-2">Minuscules</span>
+                </label>
+                <label class="inline-flex items-center mb-2">
+                    <input type="checkbox" checked id="includeNumbers" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <span class="ml-2">Chiffres</span>
+                </label>
+                <label class="inline-flex items-center mb-4">
+                    <input type="checkbox" checked id="includeSymbols" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <span class="ml-2">Symboles</span>
+                </label>
+            </div>
+        </div>
+        <button id="copyPasswordWithButton" class="bg-indigo-600 text-white px-4 py-2 rounded w-full mb-4 hover:bg-indigo-800">Copier le mot de passe</button>
+    </div>
+    <script src="./assets/index.js"></script>
+    <script>
+    </script>
+</body>
+</html>
